@@ -1,9 +1,7 @@
 import sys
 from requests import get
-import pymem
-import pymem.process
-
-pymem.get_process_name("csgo.exe")
+from pymem import *
+from pymem.process import *
 
 
 class Offsets:
@@ -19,4 +17,10 @@ try:
 except:
         sys.exit("Unable to fetch Hazedumper's Offsets")
 
+
+
+game_proc = pymem.Pymem("csgo.exe")
+game_module = module_from_name(game_proc.process_handle, "client.dll").lpBaseOfDll
+
+local_player = pymem.read_int()
 
