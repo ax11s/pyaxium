@@ -1,15 +1,10 @@
 import keyboard
-import pymem
-import pymem.process
-import time
-from modules import Offsets, base
-from win32gui import GetWindowText, GetForegroundWindow
+from modules import *
 
 
 
 def bhop():
     while True:
-
         if keyboard.is_pressed("v"):
             force_jump = base.client + Offsets.dwForceJump
             player = base.pm.read_int(base.client + Offsets.dwLocalPlayer)
