@@ -10,5 +10,6 @@ def noflash():
                 if flash_value:
                     base.pm.write_float(flash_value, float(0))
             time.sleep(1)
+            
 if __name__ == '__main__': 
     noflash()

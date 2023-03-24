@@ -2,30 +2,23 @@ import keyboard
 import pymem
 import pymem.process
 import time
+from modules import Offsets, base
 from win32gui import GetWindowText, GetForegroundWindow
 
-dwForceJump = (0x51F4D88)
-dwLocalPlayer = (0xD36B94)
-m_fFlags = (0x104)
 
 
 def bhop():
-    pm = pymem.Pymem("csgo.exe")
-    client = pymem.process.module_from_name(pm.process_handle, "client.dll").lpBaseOfDll
-
     while True:
-        if not GetWindowText(GetForegroundWindow()) == "Counter-Strike: Global Offensive":
-            continue
 
-        if keyboard.is_pressed("space"):
-            force_jump = client + dwForceJump
-            player = pm.read_int(client + dwLocalPlayer)
+        if keyboard.is_pressed("v"):
+            force_jump = base.client + Offsets.dwForceJump
+            player = base.pm.read_int(base.client + Offsets.dwLocalPlayer)
             if player:
-                on_ground = pm.read_int(player + m_fFlags)
+                on_ground = base.pm.read_int(player + Offsets.m_fFlags)
                 if on_ground and on_ground == 257:
-                    pm.write_int(force_jump, 5)
+                    base.pm.write_int(force_jump, 5)
                     time.sleep(0.08)
-                    pm.write_int(force_jump, 4)
+                    base.pm.write_int(force_jump, 4)
 
         time.sleep(0.002)
 
