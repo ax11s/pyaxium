@@ -5,6 +5,10 @@ from requests import get
 
 
 
+class Offsets:
+    pass
+
+
 def getoffsets():
     try:
         haze = get(
@@ -18,9 +22,6 @@ def getoffsets():
         sys.exit("Unable to fetch Hazedumper's Offsets")
 
 
-class Offsets:
-   
-    pass
 getoffsets()
 
 class base():
