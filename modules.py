@@ -28,5 +28,6 @@ getoffsets()
 class base():
     pm = pymem.Pymem("csgo.exe")
     client = pymem.process.module_from_name(pm.process_handle, "client.dll").lpBaseOfDll
+    localplayer = pm.read_int(client + Offsets.dwLocalPlayer)
     pass
 
