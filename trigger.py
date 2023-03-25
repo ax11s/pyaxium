@@ -3,13 +3,14 @@ from modules import *
 
 
 
+crosshairid = base.client + Offsets.m_iCrosshairId
 
 def trigger():
     while True:
         if keyboard.is_pressed("v"):
-                base.pm.write_int(base.client + Offsets.dwForceAttack, 1)
-                time.sleep(0.1)
-                base.pm.write_int(base.client + Offsets.dwForceAttack, 0)
+                crosshair = base.pm.read_int(base.localplayer, Offsets.m_iCrosshairId)
+                print(crosshair)
+
 
 
 
