@@ -6,12 +6,13 @@ customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
-class MyFrame(customtkinter.CTkFrame):
+class helloframe(customtkinter.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
-        self.label = customtkinter.CTkLabel(self)
-        self.label.grid(row=1, column=1, padx=20)
+        self.label = customtkinter.CTkLabel(master=self,width=50, height=30, text="Welcome to pyaxium!",font=customtkinter.CTkFont(size=16, weight="normal"))
+
+        self.label.grid(row=1, column=1, padx=20,pady=10)
 
 
 class App(customtkinter.CTk):
@@ -49,8 +50,16 @@ class App(customtkinter.CTk):
 
         if self.main:
                     self.main_frame = customtkinter.CTkFrame(self, width=760, corner_radius=0)
-                    self.my_frame = MyFrame(master=self)
+                    self.my_frame = helloframe(master=self)
                     self.my_frame.grid(row=0, column=1, padx=20, pady=10, sticky="nsew")
+                    self.my_text = customtkinter.Text(self)
+                    self.my_text.pack() 
+                    self.my_text.insert(customtkinter.END, "Hello, World!\nThis is some more text.")
+                    self.textbox = customtkinter.CTkTextbox(app)
+                    self.textbox.grid(row=0, column=0)
+
+                    self.textbox.insert("0.0", "new text to insert")
+                    
 
 
     def open_input_dialog_event(self):
