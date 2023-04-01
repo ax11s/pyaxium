@@ -6,14 +6,6 @@ customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
-class helloframe(customtkinter.CTkFrame):
-    def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
-
-        self.label = customtkinter.CTkLabel(master=self,width=50, height=30, text="Welcome to pyaxium!",font=customtkinter.CTkFont(size=16, weight="normal"))
-
-        self.label.grid(row=1, column=1, padx=20,pady=10)
-
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -49,17 +41,15 @@ class App(customtkinter.CTk):
 
 
         if self.main:
-                    self.main_frame = customtkinter.CTkFrame(self, width=760, corner_radius=0)
-                    self.my_frame = helloframe(master=self)
-                    self.my_frame.grid(row=0, column=1, padx=20, pady=10, sticky="nsew")
-                    self.my_text = customtkinter.Text(self)
-                    self.my_text.pack() 
-                    self.my_text.insert(customtkinter.END, "Hello, World!\nThis is some more text.")
-                    self.textbox = customtkinter.CTkTextbox(app)
-                    self.textbox.grid(row=0, column=0)
+                    self.frame = customtkinter.CTkFrame(master=self, width=740, height=80, corner_radius=8)
+                    self.frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+                            
+                    self.frame.label = customtkinter.CTkLabel(master=self,width=50, height=30, text="Welcome to pyaxium!",font=customtkinter.CTkFont(size=18, weight="bold"))
 
-                    self.textbox.insert("0.0", "new text to insert")
-                    
+                    self.label2 = customtkinter.CTkLabel(master=self, text="Welcome to the cheat suite for cs:go made by ax11! I hope you will have fun using this client.",font=customtkinter.CTkFont(size=12, weight="normal"))
+
+
+                    self.label3 = customtkinter.CTkLabel(master=self, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.",font=customtkinter.CTkFont(size=12, weight="normal"))
 
 
     def open_input_dialog_event(self):
