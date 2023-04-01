@@ -39,18 +39,15 @@ class App(customtkinter.CTk):
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 20))
 
-
         if self.main:
                     self.frame = customtkinter.CTkFrame(master=self, width=740, height=80, corner_radius=8)
                     self.frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-                            
-                    self.frame.label = customtkinter.CTkLabel(master=self,width=50, height=30, text="Welcome to pyaxium!",font=customtkinter.CTkFont(size=18, weight="bold"))
-
-                    self.label2 = customtkinter.CTkLabel(master=self, text="Welcome to the cheat suite for cs:go made by ax11! I hope you will have fun using this client.",font=customtkinter.CTkFont(size=12, weight="normal"))
-
-
-                    self.label3 = customtkinter.CTkLabel(master=self, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.",font=customtkinter.CTkFont(size=12, weight="normal"))
-
+                    self.label = customtkinter.CTkLabel(self.frame, text='Welcome to pyaxium!', font=('', 18, 'bold'))
+                    self.label.place(relx=0.5, rely=0.12, anchor=tkinter.CENTER)
+                    self.label2 = customtkinter.CTkLabel(self.frame, text="Welcome to the cheat suite for cs:go made by ax11! I hope you will have fun using this client.", font=('', 14, 'normal'))
+                    self.label2.place(relx=0.5, rely=0.26, anchor=tkinter.CENTER)
+                    self.label3 = customtkinter.CTkLabel(self.frame, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.", font=('', 14, 'normal'))
+                    self.label3.place(relx=0.5, rely=0.35, anchor=tkinter.CENTER)
 
     def open_input_dialog_event(self):
         dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
