@@ -1,6 +1,7 @@
 import tkinter
 import tkinter.messagebox
 import customtkinter
+import threading
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -63,6 +64,13 @@ class App(customtkinter.CTk):
 
 
     def stats(self):
+        def while_loop_in_thread():
+            while True:
+                print("While loop running in thread...")
+
+        thread = threading.Thread(target=while_loop_in_thread)
+        thread.start()
+        
         print("stats")
 
     def aiming(self):
