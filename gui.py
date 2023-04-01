@@ -48,17 +48,7 @@ class App(customtkinter.CTk):
                     self.label2.place(relx=0.5, rely=0.26, anchor=tkinter.CENTER)
                     self.label3 = customtkinter.CTkLabel(self.frame, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.", font=('', 14, 'normal'))
                     self.label3.place(relx=0.5, rely=0.35, anchor=tkinter.CENTER)
-
-    def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Type in a number:", title="CTkInputDialog")
-        print("CTkInputDialog:", dialog.get_input())
-
-    def change_appearance_mode_event(self, new_appearance_mode: str):
-        customtkinter.set_appearance_mode(new_appearance_mode)
-
-    def change_scaling_event(self, new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
+                    
 
     def sidebar_button_event(self):
         print("sidebar_button click")
