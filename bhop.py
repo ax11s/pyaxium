@@ -3,7 +3,7 @@ from modules import *
 
 
 
-def bhop():
+def bunny():
     while True:
         if keyboard.is_pressed("v"):
             force_jump = base.client + Offsets.dwForceJump

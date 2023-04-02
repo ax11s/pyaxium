@@ -2,9 +2,11 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 import threading
+import bhop
+import time
 
-customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "green", "dark-blue"
+customtkinter.set_appearance_mode("System") 
+customtkinter.set_default_color_theme("blue") 
 
 
 
@@ -13,8 +15,8 @@ class App(customtkinter.CTk):
         super().__init__()
 
         self.main = True
-        self.stats = False
-        self.aiming = False
+        self.statistics = False
+        self.aim = False
         self.utilities = False
         self.visual = False
 
@@ -48,16 +50,32 @@ class App(customtkinter.CTk):
 
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 20))
+        
+        def checkmenu():
+                if self.main:
+                            self.frame = customtkinter.CTkFrame(master=self, width=740, height=80, corner_radius=8)
+                            self.frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+                            self.label = customtkinter.CTkLabel(self.frame, text='Welcome to pyaxium!', font=('', 18, 'bold'))
+                            self.label.place(relx=0.5, rely=0.12, anchor=tkinter.CENTER)
+                            self.label2 = customtkinter.CTkLabel(self.frame, text="Welcome to the cheat suite for cs:go made by ax11! I hope you will have fun using this client.", font=('', 14, 'normal'))
+                            self.label2.place(relx=0.5, rely=0.26, anchor=tkinter.CENTER)
+                            self.label3 = customtkinter.CTkLabel(self.frame, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.", font=('', 14, 'normal'))
+                            self.label3.place(relx=0.5, rely=0.35, anchor=tkinter.CENTER)
+                elif self.stats:
+                            self.framestat = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
+                            self.framestat.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+                            self.progressbar = customtkinter.CTkProgressBar(master=self.framestat,
+                                                                    width=660,
+                                                                    height=20,
+                                                                    border_width=5)
+                            self.progressbar.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
+                            self.progressbar.set(10)
+                
+                time.sleep(0.00001)
+                checkmenu()
 
-        if self.main:
-                    self.frame = customtkinter.CTkFrame(master=self, width=740, height=80, corner_radius=8)
-                    self.frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-                    self.label = customtkinter.CTkLabel(self.frame, text='Welcome to pyaxium!', font=('', 18, 'bold'))
-                    self.label.place(relx=0.5, rely=0.12, anchor=tkinter.CENTER)
-                    self.label2 = customtkinter.CTkLabel(self.frame, text="Welcome to the cheat suite for cs:go made by ax11! I hope you will have fun using this client.", font=('', 14, 'normal'))
-                    self.label2.place(relx=0.5, rely=0.26, anchor=tkinter.CENTER)
-                    self.label3 = customtkinter.CTkLabel(self.frame, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.", font=('', 14, 'normal'))
-                    self.label3.place(relx=0.5, rely=0.35, anchor=tkinter.CENTER)
+        thread = threading.Thread(target=checkmenu)
+        thread.start()
 
 
 
@@ -66,21 +84,17 @@ class App(customtkinter.CTk):
 
 
     def stats(self):
-        self.stats = False
         self.main = False
+        self.stats = True
+        self.aim = False
         self.utilities = False
         self.visual = False
-        def while_loop_in_thread():
-            while True:
-                print("While loop running in thread...")
-
-        thread = threading.Thread(target=while_loop_in_thread)
-        thread.start()
         print("stats")
 
     def aiming(self):
-        self.stats = True
         self.main = False
+        self.stats = False
+        self.aiming = True
         self.utilities = False
         self.visual = False
         print("aiming")
@@ -98,10 +112,13 @@ class App(customtkinter.CTk):
         self.main = False
         self.stats = False
         self.aiming = False
-        self.utilities = False
-        self.visual = True
+        self.utilities = True
+        self.visual = False
         print("Utilities")
 
+    def Bhop(self):
+        thread = threading.Thread(target=bhop.bunny)
+        thread.start()
 
 if __name__ == "__main__":
     app = App()
