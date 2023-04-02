@@ -13,6 +13,8 @@ class App(customtkinter.CTk):
         super().__init__()
 
         self.main = True
+        self.stats = False
+        self.aiming = False
         self.utilities = False
         self.visual = False
 
@@ -64,23 +66,40 @@ class App(customtkinter.CTk):
 
 
     def stats(self):
+        self.stats = False
+        self.main = False
+        self.utilities = False
+        self.visual = False
         def while_loop_in_thread():
             while True:
                 print("While loop running in thread...")
 
         thread = threading.Thread(target=while_loop_in_thread)
         thread.start()
-        
         print("stats")
 
     def aiming(self):
+        self.stats = True
+        self.main = False
+        self.utilities = False
+        self.visual = False
         print("aiming")
 
     def visuals(self):
+        self.main = False
+        self.stats = False
+        self.aiming = False
+        self.utilities = False
+        self.visual = True
         print("visuals")
 
 
     def Utilities(self):
+        self.main = False
+        self.stats = False
+        self.aiming = False
+        self.utilities = False
+        self.visual = True
         print("Utilities")
 
 
