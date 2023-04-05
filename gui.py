@@ -52,6 +52,8 @@ class App(customtkinter.CTk):
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 20))
         
 
+
+
         while True:
                     if self.main:
                                 self.frame = customtkinter.CTkFrame(master=self, width=740, height=80, corner_radius=8)
@@ -72,8 +74,6 @@ class App(customtkinter.CTk):
                                 self.progressbar.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
                                 self.progressbar.set(10)
                 
-
-
 
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
