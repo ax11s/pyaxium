@@ -66,22 +66,37 @@ class App(customtkinter.CTk):
     def stats(self):
         self.framestat = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
         self.framestat.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-        self.progressbar = customtkinter.CTkProgressBar(master=self.framestat, width=660, height=20, border_width=5)
-        self.progressbar.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
-        self.progressbar.set(10)
+        self.label4 = customtkinter.CTkLabel(self.framestat, text='Detectability level:', font=('', 16,'bold'))
+        self.label4.place(relx=0.15, rely=0.15, anchor=tkinter.CENTER)
+        self.progressbar = customtkinter.CTkProgressBar(master=self.framestat, width=620, height=14, border_width=0)
+        self.progressbar.place(relx=0.5, rely=0.28, anchor=tkinter.CENTER)
+        self.progressbar.set(8/10)
+
                 
         print("stats")
 
 
     def aiming(self):
+        self.frameaim = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
+        self.frameaim.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+        self.label4 = customtkinter.CTkLabel(self.frameaim, text='Aim cheats:', font=('', 16,'bold'))
+        self.label4.place(relx=0.12, rely=0.15, anchor=tkinter.CENTER)
         print("aiming")
 
 
     def visuals(self):
+        self.framevis = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
+        self.framevis.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+        self.label5 = customtkinter.CTkLabel(self.framevis, text='Visual cheats:', font=('', 16,'bold'))
+        self.label5.place(relx=0.13, rely=0.15, anchor=tkinter.CENTER)
         print("visuals")
 
 
     def Utilities(self):
+        self.frameutil = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
+        self.frameutil.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+        self.label5 = customtkinter.CTkLabel(self.framevis, text='Utility cheats:', font=('', 16,'bold'))
+        self.label5.place(relx=0.13, rely=0.15, anchor=tkinter.CENTER)
         print("Utilities")
 
 
