@@ -14,11 +14,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        self.main = True
-        self.statistics = False
-        self.aim = False
-        self.utilities = False
-        self.visual = False
+
 
         self.title("Pyaxium")
         self.geometry(f"{900}x{580}")
@@ -61,36 +57,21 @@ class App(customtkinter.CTk):
 
 
     def stats(self):
-        self.main = False
-        self.stats = True
-        self.aim = False
-        self.utilities = False
-        self.visual = False
+
         print("stats")
 
     def aiming(self):
-        self.main = False
-        self.stats = False
-        self.aiming = True
-        self.utilities = False
-        self.visual = False
+
+
         print("aiming")
 
     def visuals(self):
-        self.main = False
-        self.stats = False
-        self.aiming = False
-        self.utilities = False
-        self.visual = True
+
         print("visuals")
 
 
     def Utilities(self):
-        self.main = False
-        self.stats = False
-        self.aiming = False
-        self.utilities = True
-        self.visual = False
+
         print("Utilities")
 
     def Bhop(self):
