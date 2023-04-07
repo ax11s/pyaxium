@@ -19,4 +19,4 @@ def bunny():
 
 
 if __name__ == '__main__':
-    bhop()
+    bunny()

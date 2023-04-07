@@ -2,6 +2,9 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 import threading
+import bhop
+import noflash
+import trigger
 
 import time
 
@@ -41,7 +44,7 @@ class App(customtkinter.CTk):
         self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame,text="Visuals", command=self.visuals)
         self.sidebar_button_2.grid(row=3, column=0, padx=20, pady=10)
         
-        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame,text="Utilities", command=self.Utilities)
+        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame,text="Utilities", command=self.utilities)
         self.sidebar_button_3.grid(row=4, column=0, padx=20, pady=10)
 
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], command=self.change_appearance_mode_event)
@@ -81,6 +84,9 @@ class App(customtkinter.CTk):
         self.frameaim.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
         self.label4 = customtkinter.CTkLabel(self.frameaim, text='Aim cheats:', font=('', 16,'bold'))
         self.label4.place(relx=0.12, rely=0.15, anchor=tkinter.CENTER)
+
+        self.aim_button_1 = customtkinter.CTkButton(self.frameaim,text="Trigger Bot", command=self.bhop)
+        self.aim_button_1.place(relx=0.15, rely=0.3, anchor=tkinter.CENTER)
         print("aiming")
 
 
@@ -89,20 +95,39 @@ class App(customtkinter.CTk):
         self.framevis.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
         self.label5 = customtkinter.CTkLabel(self.framevis, text='Visual cheats:', font=('', 16,'bold'))
         self.label5.place(relx=0.13, rely=0.15, anchor=tkinter.CENTER)
+
+
         print("visuals")
 
 
-    def Utilities(self):
+    def utilities(self):
         self.frameutil = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
         self.frameutil.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-        self.label5 = customtkinter.CTkLabel(self.framevis, text='Utility cheats:', font=('', 16,'bold'))
-        self.label5.place(relx=0.13, rely=0.15, anchor=tkinter.CENTER)
+        self.label6 = customtkinter.CTkLabel(self.frameutil, text='Utility cheats:', font=('', 16,'bold'))
+        self.label6.place(relx=0.13, rely=0.15, anchor=tkinter.CENTER)
+
+        self.util_button_1 = customtkinter.CTkButton(self.frameutil,text="Bunnyhop", command=self.bhop)
+        self.util_button_1.place(relx=0.15, rely=0.3, anchor=tkinter.CENTER)
+
+        self.util_button_1 = customtkinter.CTkButton(self.frameutil,text="Noflash", command=self.noflash)
+        self.util_button_1.place(relx=0.15, rely=0.45, anchor=tkinter.CENTER)
         print("Utilities")
 
 
-    def Bhop(self):
+    def bhop(self):
         thread = threading.Thread(target=bhop.bunny)
         thread.start()
+        print("started bhop succesfuly")
+
+    def noflash(self):
+        thread = threading.Thread(target=noflash.noflash)
+        thread.start()
+        print("started noflash succesfuly")
+
+    def trigger(self):
+        thread = threading.Thread(target=trigger.trigger)
+        thread.start()
+        print("started trigger succesfuly")
 
 if __name__ == "__main__":
     app = App()
