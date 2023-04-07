@@ -1,27 +1,50 @@
-import tkinter
-import tkinter.messagebox
-import customtkinter
-import threading
+import tkinter as tk
 
-import time
-
-        while True:
-                    if self.main:
-                                self.frame = customtkinter.CTkFrame(master=self, width=740, height=80, corner_radius=8)
-                                self.frame.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-                                self.label = customtkinter.CTkLabel(self.frame, text='Welcome to pyaxium!', font=('', 18, 'bold'))
-                                self.label.place(relx=0.5, rely=0.12, anchor=tkinter.CENTER)
-                                self.label2 = customtkinter.CTkLabel(self.frame, text="Welcome to the cheat suite for cs:go made by ax11! I hope you will have fun using this client.", font=('', 14, 'normal'))
-                                self.label2.place(relx=0.5, rely=0.26, anchor=tkinter.CENTER)
-                                self.label3 = customtkinter.CTkLabel(self.frame, text="Keep in mind that its a 'legit' client, made to be a help for you to win and not be used as a hvh cheat.", font=('', 14, 'normal'))
-                                self.label3.place(relx=0.5, rely=0.35, anchor=tkinter.CENTER)
-                    elif self.stats:
-                                self.framestat = customtkinter.CTkFrame(master=self, width=740, height=20, corner_radius=8)
-                                self.framestat.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-                                self.progressbar = customtkinter.CTkProgressBar(master=self.framestat,
-                                                                        width=660,
-                                                                        height=20,
-                                                                        border_width=5)
-                                self.progressbar.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
-                                self.progressbar.set(10)
-                
+class Application(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        
+        self.last_button_pressed = None
+        
+        self.create_widgets()
+        
+    def create_widgets(self):
+        self.render_button1 = tk.Button(self)
+        self.render_button1["text"] = "Render thing 1"
+        self.render_button1["command"] = self.render_thing1
+        self.render_button1.pack(side="left")
+        
+        self.render_button2 = tk.Button(self)
+        self.render_button2["text"] = "Render thing 2"
+        self.render_button2["command"] = self.render_thing2
+        self.render_button2.pack(side="left")
+        
+        self.render_canvas = tk.Canvas(self, width=300, height=300)
+        self.render_canvas.pack()
+        
+    def render_thing1(self):
+        self.last_button_pressed = "thing1"
+        self.render_canvas.delete("all") # clear the canvas
+        self.render_canvas.create_rectangle(50, 50, 250, 250, fill="blue") # draw a blue rectangle
+        
+    def render_thing2(self):
+        self.last_button_pressed = "thing2"
+        self.render_canvas.delete("all") # clear the canvas
+        self.render_canvas.create_oval(50, 50, 250, 250, fill="red") # draw a red oval
+        
+    def update(self):
+        if self.last_button_pressed == "thing1":
+            # do something if thing1 was last pressed
+            pass
+        elif self.last_button_pressed == "thing2":
+            # do something if thing2 was last pressed
+            pass
+        
+        self.after(100, self.update) # update every 100ms
+        
+root = tk.Tk()
+app = Application(master=root)
+app.update()
+app.mainloop()
