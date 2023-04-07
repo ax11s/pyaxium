@@ -57,22 +57,20 @@ class App(customtkinter.CTk):
 
 
     def stats(self):
-
         print("stats")
 
+
     def aiming(self):
-
-
         print("aiming")
 
-    def visuals(self):
 
+    def visuals(self):
         print("visuals")
 
 
     def Utilities(self):
-
         print("Utilities")
+
 
     def Bhop(self):
         thread = threading.Thread(target=bhop.bunny)
