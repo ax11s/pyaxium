@@ -85,7 +85,7 @@ class App(customtkinter.CTk):
         self.label4 = customtkinter.CTkLabel(self.frameaim, text='Aim cheats:', font=('', 16,'bold'))
         self.label4.place(relx=0.12, rely=0.15, anchor=tkinter.CENTER)
 
-        self.aim_button_1 = customtkinter.CTkButton(self.frameaim,text="Trigger Bot", command=self.bhop)
+        self.aim_button_1 = customtkinter.CTkButton(self.frameaim,text="Trigger Bot", command=self.trigger)
         self.aim_button_1.place(relx=0.15, rely=0.3, anchor=tkinter.CENTER)
         print("aiming")
 
